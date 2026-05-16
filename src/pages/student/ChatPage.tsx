@@ -7,7 +7,7 @@ const generateId = () => {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 };
 
-const API_URL = 'http://localhost:3001/api';
+const API_URL = '/api';
 
 export default function ChatPage() {
   const location = useLocation();

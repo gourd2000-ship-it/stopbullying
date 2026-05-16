@@ -1,73 +1,38 @@
-# React + TypeScript + Vite
+# 마음 톡톡 - 초등학생 학교폭력 상담 챗봇
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+초등학교 중~고학년 학생들을 위한 따뜻한 AI 상담 웹앱입니다.
 
-Currently, two official plugins are available:
+## 🌟 주요 기능
+- **AI 상담사 '마음샘'**: Gemini 1.5/2.5 Flash 기반의 공감형 대화.
+- **자동 상황 요약**: 상담 종료 후 선생님을 위한 10가지 항목 보고서 생성.
+- **위험도 분류**: 낮음/보통/높음/긴급 4단계 자동 분류.
+- **관리자 페이지**: 상담 내역 확인 및 조치 기록 관리.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 배포 방법 (Vercel 권장)
 
-## React Compiler
+이 프로젝트는 Vercel을 통해 프론트엔드와 백엔드를 한 번에 배포할 수 있도록 설정되어 있습니다.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **GitHub 저장소 생성**: 이 코드를 본인의 GitHub에 푸시합니다.
+2. **Vercel 연결**: Vercel 대시보드에서 'Add New Project'를 클릭하고 해당 저장소를 선택합니다.
+3. **환경 변수 설정**: Vercel 프로젝트 설정의 'Environment Variables' 섹션에 다음을 추가합니다.
+   - `GEMINI_API_KEY`: 본인의 구글 Gemini API 키
+4. **배포**: 'Deploy' 버튼을 누르면 배포가 완료됩니다!
 
-## Expanding the ESLint configuration
+## 💻 로컬 개발 환경 실행
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. 백엔드 서버 실행
+```bash
+cd server
+npm install
+npm run start
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2. 프론트엔드 실행
+```bash
+npm install
+npm run dev
 ```
+
+## 🔒 보안 및 개인정보
+- API 키는 서버측(Serverless Functions)에서만 사용되어 외부에 노출되지 않습니다.
+- 학생의 실명은 요구하지 않으며, 모든 상담 기록은 로컬 스토리지에 안전하게 보관됩니다.
